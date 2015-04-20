@@ -14,6 +14,7 @@ wrapperDiv.style['background-color'] = '#ffaaaa';
 wrapperDiv.style.top = '0px';
 wrapperDiv.style.paddingTop = '200px';
 wrapperDiv.style.width = '100%';
+wrapperDiv.style['z-index'] = -1;
 wrapperDiv.style.height = '100%';
 
 
