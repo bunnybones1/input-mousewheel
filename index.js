@@ -5,7 +5,7 @@ var onMouseWheelSignal = new signals.Signal();
 EventUtil.addEvent(document, 'mousewheel', onDocumentMouseWheel );
 
 function onDocumentMouseWheel( event ) {
-	onMouseWheelSignal.dispatch(event.wheelDelta);
+	onMouseWheelSignal.dispatch(event.wheelDelta, event);
 };
 
 var MouseWheel = function() {
