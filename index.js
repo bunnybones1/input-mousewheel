@@ -1,18 +1,15 @@
 var EventUtil = require('browser-event-adder');
 var signals = require('signals');
 
-var onMouseWheelSignal = new signals.Signal();
-EventUtil.addEvent(document, 'mousewheel', onDocumentMouseWheel );
 
-function onDocumentMouseWheel( event ) {
-	onMouseWheelSignal.dispatch(event.wheelDelta, event);
+var MouseWheel = function(targetElement) {
+	var onWheelSignal = new signals.Signal();
+	EventUtil.addEvent(targetElement, 'mousewheel', onElementMouseWheel );
+
+	function onElementMouseWheel( event ) {
+		onWheelSignal.dispatch(event.wheelDelta, event);
+	};
+	this.onWheelSignal = onWheelSignal;
 };
 
-var MouseWheel = function() {
-};
-
-MouseWheel.prototype = {
-	onMouseWheelSignal : onMouseWheelSignal,
-};
-
-module.exports = new MouseWheel();
+module.exports = MouseWheel;

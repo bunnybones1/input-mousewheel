@@ -32,7 +32,8 @@ containerDiv.style.height = '400px';
 
 var scroll = false;
 
-MouseWheel.onMouseWheelSignal.add(function(val, event) {
+var mouseWheel = new MouseWheel(containerDiv);	
+mouseWheel.onWheelSignal.add(function(val, event) {
 	mouseWheelLabel.update('[wheel delta] ' + val)
 	if(!scroll) event.preventDefault();
 });
