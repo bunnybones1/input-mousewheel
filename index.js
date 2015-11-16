@@ -8,16 +8,18 @@ var MouseWheel = function(targetElement) {
 	EventUtil.addEvent(targetElement, 'DOMMouseScroll', onElementMouseWheel ); // Firefox
 
 	function onElementMouseWheel( event ) {
-		var delta;
+		var deltaX, deltaY;
 
-		if (event.wheelDelta !== undefined ) {
-			delta = event.wheelDelta;
+		if (event.wheelDeltaX !== undefined ) {
+			deltaX = event.wheelDeltaX;
+			deltaY = event.wheelDeltaY;
 		} else if ( event.detail !== undefined ) { // Firefox
-			delta = -30 * event.detail;
+			deltaX = 0;
+			deltaY = -30 * event.detail;
 		}
 
-		onWheelSignal.dispatch(delta, event);
-	};
+		onWheelSignal.dispatch(deltaX, deltaY, event);
+	}
 	this.onWheelSignal = onWheelSignal;
 };
 
